@@ -1,0 +1,95 @@
+/* Global Reset and Base Styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff;
+  text-align: center;
+  background-color: #333;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+button, a, input {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.corpus {
+    background-color: gray;
+    height: 400px;
+    width: 300px;
+    margin: auto;
+    position: relative;
+    top: 20em;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+.button-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: auto 25px;
+    justify-content: space-around;
+}
+
+.button {
+    height: 50px;
+    width: 50px;
+    background-color: darkgray;
+    /* margin: auto; */
+    box-shadow: 0 0 1px 1px black;
+    font-size: 1.5em;
+    color: black;
+}
+.screen {
+    width: 80%;
+    height: 15%;
+    background-color: darkgray;
+    box-shadow: 0 0 1px 1px black;
+    margin: auto;
+    border-radius: 15px;
+}
+.button:hover {
+    color: white;
+    background-color: #333;
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: transform 0.1s ease-in;
+}
