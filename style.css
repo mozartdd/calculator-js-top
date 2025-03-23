@@ -80,11 +80,16 @@ button, a, input {
 }
 .screen {
     width: 80%;
-    height: 15%;
+    height: 25%;
     background-color: darkgray;
     box-shadow: 0 0 1px 1px black;
     margin: auto;
     border-radius: 15px;
+    font-size: 2em;
+}
+.result {
+  text-align: start;
+  margin: 0px 0 0 10px;
 }
 .button:hover {
     color: white;
