@@ -86,15 +86,20 @@ button, a, input {
     margin: auto;
     border-radius: 15px;
     font-size: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding-left: 10px;
+
 }
-.result {
+/* .result {
   text-align: start;
   margin: 0px 0 0 10px;
 }
 .result-two {
   text-align: start;
   margin: 0px 0 0 10px;
-}
+} */
 .button:hover {
     color: white;
     background-color: #333;
