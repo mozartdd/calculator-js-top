@@ -91,6 +91,10 @@ button, a, input {
   text-align: start;
   margin: 0px 0 0 10px;
 }
+.result-two {
+  text-align: start;
+  margin: 0px 0 0 10px;
+}
 .button:hover {
     color: white;
     background-color: #333;

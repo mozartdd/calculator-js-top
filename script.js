@@ -19,6 +19,7 @@ const del = document.querySelector('.delete');
 
 const button = document.querySelectorAll('.button');
 const result = document.querySelector('.result');
+const resultTwo = document.querySelector('.result-two');
 
 //BASIC MATH FUNCTIONS
 function add(a, b) {
@@ -34,41 +35,78 @@ function divideNum(a, b) {
     return a / b;
 }
 
-let a;
-let b;
-let operator;
-let screenResult = '';
+let a = '';
+let b = '';
+let operator = '+';
+
 
 //FUNCTION THAT RETURNS MATH FUNCTION BASED ON OPERATOR INPUT
 function operate(a, b, operator) {
     if (operator === '+') {
-        return add(a, b);
+        return console.log(add(a, b));
+        ;
     };
     if (operator === '-') {
-        return subtract(a, b);
+        return console.log(subtract(a, b));
+        ;
     };
     if (operator === '*') {
-        return multiply(a, b);
+        return console.log(multiply(a, b));
+        ;
     };
     if (operator === '/') {
-        return divide(a, b);
+        return console.log(divideNum(a, b));
+        ;
     }
 };
 
-//FUNCTION THAT ADDS VALUE TO DISPLAY WHEN U PRESS A BUTTON
-// function addElementsToScreen(el) {
-//     if (el.classList === 'delete') {
-//         result.textContent === '';
-//     }
-// }
 
+equal.addEventListener('click', () => {
+    operate(a, b, operator);
+});
 
-digit.forEach((num) => {
-    num.addEventListener('click', () => {
-        if (screenResult.length <= 10) {
-            screenResult = result.textContent += num.innerText;
-        }
-    })
+getFirstInteger()
+getSecondInteger()
+
+//I NEED A FUNCTION WHICH RETURNS THE INT FROM BUTTON INPUT //
+
+function getFirstInteger() {
+    digit.forEach((num) => {
+        num.addEventListener('click', () => {
+            if (a.length <= 0 && num.innerText === '0') {
+                result.textContent += '';
+                a = parseInt(result.textContent);
+                return a;
+            } else if (a.length <= 10) {
+                result.textContent += num.innerText;
+                a = parseInt(result.textContent);
+                return a;
+            }
+        });
+    });
+};
+
+function getSecondInteger() {
+    digit.forEach((num) => {
+        num.addEventListener('click', () => {
+            if (b.length <= 0 && num.innerText === '0') {
+                resultTwo.textContent += '';
+                b = parseInt(resultTwo.textContent);
+                return b;
+            } else if (b.length <= 10) {
+                resultTwo.textContent += num.innerText;
+                b = parseInt(resultTwo.textContent);
+                return b;
+            }
+        });
+    });
+}
+//CLEARS RESULT SCREEN
+del.addEventListener('click', () => {
+    result.textContent = '';
+    a = '';
+    resultTwo.textContent = '';
+    b = '';
 });
 
 
