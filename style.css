@@ -1,0 +1,85 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    font-size: 2em;
+    text-align: center;
+  }
+
+  @font-face {
+    font-family: calculatorFont;
+    src: url(font-family/Digital7Mono-Yz9J4.ttf);
+  }
+  
+  body {
+    font-family: calculatorFont;
+    line-height: 1.5;
+    color: white;
+    background-color: aliceblue;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  input, textarea, button {
+    font-family: inherit;
+  }
+  
+  .calculator {
+    width: 300px;
+    height: 440px;
+    border: 2px solid black;
+    margin: auto;
+    position: relative;
+    top: 200px;
+    background-color: #333;
+    border-radius: 25px;
+  }
+  .screen {
+    width: 230px;
+    height: 130px;
+    background-color: aliceblue;
+    margin: 25px auto 0 auto;
+    border-radius: 25px;
+  }
+
+  .button-side {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 230px;
+    width: 250px;
+    margin: 20px auto 25px auto;
+    gap: 7px;
+  }
+
+  .button {
+    align-self: auto;
+    height: 47px;
+    width: 47px;
+    background-color: black;
+    border-radius: 5px;
+  }
