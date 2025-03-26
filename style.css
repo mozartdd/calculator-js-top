@@ -20,7 +20,7 @@
     font-family: calculatorFont;
     line-height: 1.5;
     color: white;
-    background-color: aliceblue;
+    background-color: gray;
   }
   
   img {
@@ -61,9 +61,13 @@
   .screen {
     width: 230px;
     height: 130px;
-    background-color: aliceblue;
+    background-color: rgb(173, 171, 171);
     margin: 25px auto 0 auto;
     border-radius: 25px;
+    color: greenyellow;
+    font-size: 1.4em;
+    text-align: start;
+    padding-left: 10px;
   }
 
   .button-side {
@@ -82,4 +86,10 @@
     width: 47px;
     background-color: black;
     border-radius: 5px;
+  }
+
+  .button:hover {
+    background-color: gray;
+    color: black;
+    cursor: pointer;
   }
