@@ -1,15 +1,23 @@
 const digit = document.querySelectorAll('.digit');
 const equal = document.querySelector('.equal');
 const clear = document.querySelector('.clear');
+const opBtn = document.querySelectorAll('.operator');
+const btn = document.querySelectorAll('.button');
 
 const result1 = document.querySelector('.screen-result-one');
 const result2 = document.querySelector('.screen-result-two');
+const op = document.querySelector('.op');
+const rs = document.querySelector('.result');
 
 
 //VARIABLES WHICH I WILL USE IN MATH FUNCTIONS
-let num1 = 0;
-let num2 = 4;
-let operator = '/';
+let num1;
+let num2;
+let operator;
+let result;
+
+//THIS VARIABLE IS BEING CHANGED DYNAMICALLY BASED ON WHICH NUMBER IS BEING ENTERED NUM1 OR NUM2
+let isActive = true;
 
 //BASIC FUNCTIONS FOR MATH OPERATIONS
 function addition(a, b) {
@@ -39,37 +47,77 @@ function operate(num1, num2, operator) {
     }
 }
 
-//WHICH PARSES TROUGH INT VARIABLES AND ADDS SCREEN VALUE TO NUM1 VAR
+//EVENT LISTENER WHICH DETERMINES WHAT WILL BE NUM1
 digit.forEach((num) => {
     num.addEventListener('click', () => {
-        if (result1.textContent < 999999999) {
+        //IF TRUE NUM INPUT VALUE WILL BE NUM2
+        if (isActive) {
+            //RESETS PREVIOUS RESULT
+            rs.textContent = '';
+            //MAKES NUM1 VARIABLE A RESULT1 TEXT CONT VALUE
             result1.textContent += num.textContent;
             result1.textContent = result1.textContent.replace(/^0+/, '')
             num1 = +result1.textContent;
-            console.log(num1);
         }
      })        
 })
-// digit.forEach((num) => {
-//     num.addEventListener('click', () => {
-//         if (result2.textContent < 999999999) {
-//             result2.textContent += num.textContent;
-//             num2 = +result2.textContent;
-//         }
-//      })        
-// })
 
-//TEST
+//EVENT LISTENER WHICH DETERMINES WHAT WILL BE NUM2
+digit.forEach((num) => {
+    num.addEventListener('click', () => {
+        //IF FALSE NUM INPUT VALUE WILL BE NUM2
+        if (!isActive) {
+            //REMOVES RESULT1 OPERATOR AND PREVIOUS RESULT FROM SCREEN FOR CLEAN INPUT
+            result1.textContent = '';
+            rs.textContent = '';
+            op.textContent = '';
+            //MAKES NUM2 VARIABLE A RESULT2 TEXT CONT
+            result2.textContent += num.textContent;
+            num2 = +result2.textContent;
+        }
+     })        
+})
+
+//DETERMINES WHAT MATH FUNCTION OPERATOR WILL BE
+opBtn.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        //CHECKS IF NUM1 IS DEFINED BEFORE APPLYING MATH OPERATOR
+        if (num1 !== undefined) {
+            operator = btn.textContent;
+            op.textContent = operator;
+            //IF FALSE NUM INPUT VALUE WILL BE NUM2
+            isActive = false;
+        }
+    })
+})
+
+//SHOW RESULT AFTER EQUAL BUTTON IS BEING PRESSED
 equal.addEventListener('click', () => {
-    result1.textContent = operate(num1, num2, '+');
+    result2.textContent = '';
+    rs.textContent = operate(num1, num2, operator);
+    isActive = true;
+    result = +rs.textContent;
+    num1 = result;
+    num2 = '';
 });
 
 //FUNCTION AND EVENT LISTENER TO CLEAR SCREEN AFTER C IS CLICKED
 clear.addEventListener('click', clearScreen);
 
 function clearScreen() {
+    isActive = true;
     result1.textContent = '';
     result2.textContent = '';
-    num1 = 0;
-    // num2 = 0;
+    op.textContent = '';
+    num1 = '';
+    num2 = '';
+    result = '';
+    operator = '';
+    rs.textContent = '';
 }
+
+btn.forEach((b) => {
+    b.addEventListener('click', () => {
+        console.log(num1, num2, operator, isActive, result)
+    })
+})
