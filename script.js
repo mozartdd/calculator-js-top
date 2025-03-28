@@ -61,7 +61,7 @@ digit.forEach((num) => {
 
 //TEST
 equal.addEventListener('click', () => {
-    console.log(operate(num1, num2, '+'));
+    result1.textContent = operate(num1, num2, '+');
 });
 
 //FUNCTION AND EVENT LISTENER TO CLEAR SCREEN AFTER C IS CLICKED
