@@ -1,10 +1,14 @@
 const digit = document.querySelectorAll('.digit');
-const result1 = document.querySelector('.screen');
 const equal = document.querySelector('.equal');
+const clear = document.querySelector('.clear');
 
-//VARIABLES WHICH I WILL USE LATER
-let num1;
-let num2 = 12;
+const result1 = document.querySelector('.screen-result-one');
+const result2 = document.querySelector('.screen-result-two');
+
+
+//VARIABLES WHICH I WILL USE IN MATH FUNCTIONS
+let num1 = 0;
+let num2 = 4;
 let operator = '/';
 
 //BASIC FUNCTIONS FOR MATH OPERATIONS
@@ -38,15 +42,34 @@ function operate(num1, num2, operator) {
 //WHICH PARSES TROUGH INT VARIABLES AND ADDS SCREEN VALUE TO NUM1 VAR
 digit.forEach((num) => {
     num.addEventListener('click', () => {
-        result1.textContent += num.textContent;
-        num1 = +result1.textContent;
+        if (result1.textContent < 999999999) {
+            result1.textContent += num.textContent;
+            result1.textContent = result1.textContent.replace(/^0+/, '')
+            num1 = +result1.textContent;
+            console.log(num1);
+        }
      })        
 })
+// digit.forEach((num) => {
+//     num.addEventListener('click', () => {
+//         if (result2.textContent < 999999999) {
+//             result2.textContent += num.textContent;
+//             num2 = +result2.textContent;
+//         }
+//      })        
+// })
 
 //TEST
 equal.addEventListener('click', () => {
-    console.log(operate(num1, 5, '+'));
-})
+    console.log(operate(num1, num2, '+'));
+});
 
+//FUNCTION AND EVENT LISTENER TO CLEAR SCREEN AFTER C IS CLICKED
+clear.addEventListener('click', clearScreen);
 
-// returnNumOne()
+function clearScreen() {
+    result1.textContent = '';
+    result2.textContent = '';
+    num1 = 0;
+    // num2 = 0;
+}
