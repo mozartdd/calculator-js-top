@@ -8,14 +8,12 @@ const erase = document.querySelector('.erase')
 const result1 = document.querySelector('.screen-result-one');
 const result2 = document.querySelector('.screen-result-two');
 const op = document.querySelector('.op');
-const rs = document.querySelector('.result');
 
 
 //VARIABLES WHICH I WILL USE IN MATH FUNCTIONS
 let num1;
 let num2;
 let operator;
-let result;
 
 //THIS VARIABLE IS BEING CHANGED DYNAMICALLY BASED ON WHICH NUMBER IS BEING ENTERED NUM1 OR NUM2
 let isActive = true;
@@ -54,7 +52,6 @@ digit.forEach((num) => {
         //IF TRUE NUM INPUT VALUE WILL BE NUM2
         if (isActive) {
             //RESETS PREVIOUS RESULT
-            rs.textContent = '';
             //MAKES NUM1 VARIABLE A RESULT1 TEXT CONT VALUE
             result1.textContent += num.textContent;
             result1.textContent = result1.textContent.replace(/^0+/, '')
@@ -70,7 +67,6 @@ digit.forEach((num) => {
         if (!isActive) {
             //REMOVES RESULT1 OPERATOR AND PREVIOUS RESULT FROM SCREEN FOR CLEAN INPUT
             result1.textContent = '';
-            rs.textContent = '';
             op.textContent = '';
             //MAKES NUM2 VARIABLE A RESULT2 TEXT CONT
             result2.textContent += num.textContent;
@@ -95,10 +91,10 @@ opBtn.forEach((btn) => {
 //SHOW RESULT AFTER EQUAL BUTTON IS BEING PRESSED
 equal.addEventListener('click', () => {
     result2.textContent = '';
-    rs.textContent = operate(num1, num2, operator);
+    result1.textContent = operate(num1, num2, operator);
     isActive = true;
-    result = +rs.textContent;
-    num1 = result;
+    num1 = +result1.textContent;
+    // num1 = result;
     num2 = '';
 });
 
@@ -113,9 +109,7 @@ function clearScreen() {
     op.textContent = '';
     num1 = '';
     num2 = '';
-    result = '';
     operator = '';
-    rs.textContent = '';
 }
 
 function removeLastDigit() {
@@ -126,14 +120,10 @@ function removeLastDigit() {
         num2 = Math.floor(num2 / 10);
         result2.textContent = num2;
     }
-    //  else {
-    //     result = Math.floor(result / 10);
-    //     rs.textContent = result;
-    // }
 }
 
 btn.forEach((b) => {
     b.addEventListener('click', () => {
-        console.log(num1, num2, operator, isActive, result)
+        console.log(num1, num2, operator, isActive)
     })
 })
