@@ -43,7 +43,7 @@ function operate(num1, num2, operator) {
         case '*':
             return multiply(num1, num2);
         case '/':
-            return divide(num1, num2).toFixed(2);
+            return divide(num1, num2);
     }
 }
 
@@ -88,7 +88,7 @@ opBtn.forEach((btn) => {
         }
         if (num2 !== '') {
             result2.textContent = '';
-            result1.textContent = operate(num1, num2, operator);
+            result1.textContent = operate(num1, num2, operator).toFixed(2);
             // isActive = false;
             num1 = +result1.textContent;
             num2 = '';
@@ -109,11 +109,13 @@ dot.addEventListener('click', () => {
 
 //SHOW RESULT AFTER EQUAL BUTTON IS BEING PRESSED
 equal.addEventListener('click', () => {
-    result2.textContent = '';
-    result1.textContent = operate(num1, num2, operator);
-    isActive = true;
-    num1 = +result1.textContent;
-    num2 = '';
+    if(!isActive) {
+        result2.textContent = '';
+        result1.textContent = operate(num1, num2, operator).toFixed(2);
+        isActive = true;
+        num1 = +result1.textContent;
+        num2 = '';
+    }
 });
 
 //FUNCTION AND EVENT LISTENER TO CLEAR SCREEN AFTER C IS CLICKED
