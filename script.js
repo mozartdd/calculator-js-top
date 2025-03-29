@@ -79,6 +79,7 @@ digit.forEach((num) => {
 //DETERMINES WHAT MATH FUNCTION OPERATOR WILL BE
 opBtn.forEach((btn) => {
     btn.addEventListener('click', () => {
+        let tempOperator = operator;
         //CHECKS IF NUM1 IS DEFINED BEFORE APPLYING MATH OPERATOR
         if (num1 !== undefined) {
             operator = btn.textContent;
@@ -88,7 +89,7 @@ opBtn.forEach((btn) => {
         }
         if (num2 !== '') {
             result2.textContent = '';
-            result1.textContent = operate(num1, num2, operator);
+            result1.textContent = operate(num1, num2, tempOperator);
             // isActive = false;
             num1 = +result1.textContent;
             num2 = '';
@@ -141,9 +142,3 @@ function removeLastDigit() {
         result2.textContent = num2;
     }
 }
-
-btn.forEach((b) => {
-    b.addEventListener('click', () => {
-        console.log(num1, num2, operator, isActive)
-    })
-})
