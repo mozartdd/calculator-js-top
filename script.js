@@ -4,6 +4,7 @@ const clear = document.querySelector('.clear');
 const opBtn = document.querySelectorAll('.operator');
 const btn = document.querySelectorAll('.button');
 const erase = document.querySelector('.erase')
+const dot = document.querySelector('.dot');
 
 const result1 = document.querySelector('.screen-result-one');
 const result2 = document.querySelector('.screen-result-two');
@@ -11,8 +12,8 @@ const op = document.querySelector('.op');
 
 
 //VARIABLES WHICH I WILL USE IN MATH FUNCTIONS
-let num1;
-let num2;
+let num1 = '';
+let num2 = '';
 let operator;
 
 //THIS VARIABLE IS BEING CHANGED DYNAMICALLY BASED ON WHICH NUMBER IS BEING ENTERED NUM1 OR NUM2
@@ -42,7 +43,7 @@ function operate(num1, num2, operator) {
         case '*':
             return multiply(num1, num2);
         case '/':
-            return Math.round(divide(num1, num2));
+            return divide(num1, num2).toFixed(2);
     }
 }
 
@@ -85,7 +86,25 @@ opBtn.forEach((btn) => {
             //IF FALSE NUM INPUT VALUE WILL BE NUM2
             isActive = false;
         }
+        if (num2 !== '') {
+            result2.textContent = '';
+            result1.textContent = operate(num1, num2, operator);
+            // isActive = false;
+            num1 = +result1.textContent;
+            num2 = '';
+        }
     })
+})
+
+dot.addEventListener('click', () => {
+    if (isActive) {
+        result1.textContent += '.';
+        num1 += '.';
+    } 
+    if (!isActive) {
+        result2.textContent += '.';
+        num2 += '.';
+    }
 })
 
 //SHOW RESULT AFTER EQUAL BUTTON IS BEING PRESSED
@@ -94,7 +113,6 @@ equal.addEventListener('click', () => {
     result1.textContent = operate(num1, num2, operator);
     isActive = true;
     num1 = +result1.textContent;
-    // num1 = result;
     num2 = '';
 });
 

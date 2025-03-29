@@ -57,6 +57,7 @@
     top: 200px;
     background-color: #333;
     border-radius: 25px;
+    box-shadow: -2px 2px 2px black;
   }
   .screen {
     overflow: hidden;
@@ -94,14 +95,20 @@
     box-shadow: -5px 5px 2px black;
   }
 
+  .container {
+    display: flex;
+    width: 85%;
+    margin: auto;
+  }
+
   .erase {
     font-size: 0.9em;
     padding-top: 4px;
   }
 
-  .clear-button {
+  .clear-button, .equal {
     height: 47px;
-    width: 80%;
+    width: 46%;
     background-color: black;
     border-radius: 5px;
     border: 1px solid gray;
