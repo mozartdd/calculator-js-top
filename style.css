@@ -115,17 +115,18 @@
     margin: auto;
   }
 
-  .button:hover {
+  .digit:hover, .dot:hover, .erase:hover {
     background-color: gray;
     color: black;
     cursor: pointer;
   }
-
-  .operator {
-    background-color: rgb(99, 98, 98);
+  .operator:hover, .equal:hover, .clear:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
   }
 
-  .equal {
+  .operator, .equal {
     background-color: rgb(99, 98, 98);
   }
 

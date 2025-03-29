@@ -41,9 +41,9 @@ function operate(num1, num2, operator) {
         case '-':
             return subtract(num1, num2);
         case '*':
-            return multiply(num1, num2);
+            return multiply(num1, num2).toFixed(2);
         case '/':
-            return divide(num1, num2);
+            return divide(num1, num2).toFixed(2);
     }
 }
 
@@ -88,7 +88,7 @@ opBtn.forEach((btn) => {
         }
         if (num2 !== '') {
             result2.textContent = '';
-            result1.textContent = operate(num1, num2, operator).toFixed(2);
+            result1.textContent = operate(num1, num2, operator);
             // isActive = false;
             num1 = +result1.textContent;
             num2 = '';
@@ -111,7 +111,7 @@ dot.addEventListener('click', () => {
 equal.addEventListener('click', () => {
     if(!isActive) {
         result2.textContent = '';
-        result1.textContent = operate(num1, num2, operator).toFixed(2);
+        result1.textContent = operate(num1, num2, operator);
         isActive = true;
         num1 = +result1.textContent;
         num2 = '';
