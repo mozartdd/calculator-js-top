@@ -79,17 +79,30 @@
     flex-wrap: wrap;
     height: 230px;
     width: 250px;
-    margin: 20px auto 25px auto;
+    margin: 20px auto 2px auto;
     gap: 7px;
   }
 
   .button {
-    align-self: auto;
     height: 47px;
     width: 47px;
     background-color: black;
     border-radius: 5px;
     border: 1px solid gray;
+  }
+
+  .erase {
+    font-size: 0.9em;
+    padding-top: 4px;
+  }
+
+  .clear-button {
+    height: 47px;
+    width: 80%;
+    background-color: black;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin: auto;
   }
 
   .button:hover {

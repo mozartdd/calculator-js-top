@@ -3,6 +3,7 @@ const equal = document.querySelector('.equal');
 const clear = document.querySelector('.clear');
 const opBtn = document.querySelectorAll('.operator');
 const btn = document.querySelectorAll('.button');
+const erase = document.querySelector('.erase')
 
 const result1 = document.querySelector('.screen-result-one');
 const result2 = document.querySelector('.screen-result-two');
@@ -103,6 +104,7 @@ equal.addEventListener('click', () => {
 
 //FUNCTION AND EVENT LISTENER TO CLEAR SCREEN AFTER C IS CLICKED
 clear.addEventListener('click', clearScreen);
+erase.addEventListener('click', removeLastDigit);
 
 function clearScreen() {
     isActive = true;
@@ -114,6 +116,20 @@ function clearScreen() {
     result = '';
     operator = '';
     rs.textContent = '';
+}
+
+function removeLastDigit() {
+    if (isActive) {
+        num1 = Math.floor(num1 / 10);
+        result1.textContent = num1;
+    } else if (!isActive) {
+        num2 = Math.floor(num2 / 10);
+        result2.textContent = num2;
+    }
+    //  else {
+    //     result = Math.floor(result / 10);
+    //     rs.textContent = result;
+    // }
 }
 
 btn.forEach((b) => {
